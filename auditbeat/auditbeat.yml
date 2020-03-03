@@ -49,7 +49,7 @@ setup.kibana:
 
 #-------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
-  hosts: [""]
+  hosts: ["elasticsearch-api-endpoint"]
 
  
 #================================ Procesors =====================================
