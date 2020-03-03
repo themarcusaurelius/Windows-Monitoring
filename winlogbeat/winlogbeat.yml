@@ -28,7 +28,7 @@ setup.kibana:
 #-------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
   # Array of hosts to connect to.
-  hosts: [""]
+  hosts: ["elasticseach-api-endpoint"]
 
 #================================ Procesors =====================================
 
