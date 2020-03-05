@@ -26,13 +26,7 @@ auditbeat.modules:
   - X:/*
   - Y:/*
   - Z:/*
-
-- module: file_integrity
-  paths:
   - auditbeat-path
-  recursive: true
- 
-
 
 #==================== Elasticsearch template setting ==========================
 setup.template.settings:
