@@ -17,4 +17,4 @@ Currently provides the following features that will be monitored:
 - Successful/unsuccessful logons monitoring
 - Active directory user permissions monitoring
 
-### Setup
+### Installation & Setup
