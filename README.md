@@ -1,6 +1,6 @@
 # Complete Windows Monitoring Package
 
-This program provides security and application monitoring to windows computers and servers
+This program provides security and application monitoring to windows computers and servers complete with high engaging visuals and alerting.
 
 Provides the following features that will be monitored:
 
