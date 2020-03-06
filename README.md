@@ -16,3 +16,5 @@ Provides the following features that will be monitored:
 - File changes monitoring
 - Successful/unsuccessful logons monitoring
 - Active directory user permissions monitoring
+
+### Setup
