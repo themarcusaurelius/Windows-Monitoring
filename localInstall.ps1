@@ -5,7 +5,7 @@
 $principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
 if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    "`nRunning Powershell with full privileges"
+    "`nRunning Powershell with full privileges`n"
 
     #CD's into Folder to set the execution policies
     Set-Location -Path 'c:\windows-monitoring-master\local\winlogbeat'
