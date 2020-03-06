@@ -275,6 +275,9 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
 
     #Run Auditbeat restart in the background
     Start-Job -FilePath C:\windows-monitoring\scripts\auditbeatRestart.ps1
+
+    #Close Powershell window
+    Stop-Process -Id $PID
 }
 else {
     Start-Process -FilePath "powershell" -ArgumentList "$('-File ""')$(Get-Location)$('\')$($MyInvocation.MyCommand.Name)$('""')" -Verb runAs
