@@ -1,6 +1,6 @@
-Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope CurrentUser	
-Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope LocalMachine
-Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope Process
+# Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope CurrentUser	
+# Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope LocalMachine
+# Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope Process
 
 $principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
@@ -11,19 +11,19 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     Rename-Item 'C:\windows-monitoring-master' 'C:\windows-monitoring'
 
     #CD's into Folder to set the execution policies
-    Set-Location -Path 'c:\windows-monitoring\filebeat'
+    Set-Location -Path 'c:\windows-monitoring\local\filebeat'
     Set-ExecutionPolicy Unrestricted
     "`nFilebeat Execution policy set - Success"
 
-    Set-Location -Path 'c:\windows-monitoring\winlogbeat'
+    Set-Location -Path 'c:\windows-monitoring\local\winlogbeat'
     Set-ExecutionPolicy Unrestricted
     "Winlogbeat Execution policy set - Success"
 
-    Set-Location -Path 'c:\windows-monitoring\auditbeat'
+    Set-Location -Path 'c:\windows-monitoring\local\auditbeat'
     Set-ExecutionPolicy Unrestricted
     "Auditbeat Execution policy set - Success"
 
-    Set-Location -Path 'c:\windows-monitoring\metricbeat'
+    Set-Location -Path 'c:\windows-monitoring\local\metricbeat'
     Set-ExecutionPolicy Unrestricted
     "Metricbeat Execution policy set - Success"
 
