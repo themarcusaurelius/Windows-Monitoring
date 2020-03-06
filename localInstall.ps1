@@ -11,10 +11,6 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     Rename-Item 'C:\windows-monitoring-master' 'C:\windows-monitoring'
 
     #CD's into Folder to set the execution policies
-    Set-Location -Path 'c:\windows-monitoring\local\filebeat'
-    Set-ExecutionPolicy Unrestricted
-    "`nFilebeat Execution policy set - Success"
-
     Set-Location -Path 'c:\windows-monitoring\local\winlogbeat'
     Set-ExecutionPolicy Unrestricted
     "Winlogbeat Execution policy set - Success"
