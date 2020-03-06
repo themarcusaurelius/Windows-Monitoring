@@ -7,32 +7,8 @@ $principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.
 if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     "Running Powershell with full privileges"
 
-    $Dest = 'C:\windows-security-package.zip'
-
-    "`nDownloading Package..."
-
-    #Download Zip Package
-    (New-Object Net.WebClient).DownloadFile('https://github.com/themarcusaurelius/windows-package/archive/master.zip', 'C:\windows-security-package.zip')
-
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-    "`nPackage Downloaded"
-
-    "`nExtracting Zip File..."
-
-    #Defines where the extracted folder where go
-    $ExtractDir = 'c:\'
-
-    #Extracts the zip folder and sends to the new folder
-    $ExtShell = New-Object -ComObject Shell.Application
-    $files = $ExtShell.Namespace($Dest).Items()
-    $ExtShell.Namespace($ExtractDir).CopyHere($files)
-
-    #Removes original zip folder
-    Remove-Item -LiteralPath 'c:\windows-security-package.zip' -Recurse -Confirm:$false
-
     #Rename Folder
-    Rename-Item 'C:\windows-package-master' 'C:\windows-monitoring'
+    Rename-Item 'C:\windows-monitoring-master' 'C:\windows-monitoring'
 
     #CD's into Folder to set the execution policies
     Set-Location -Path 'c:\windows-monitoring\filebeat'
@@ -146,9 +122,12 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     $objForm.Add_Shown({$objForm.Activate()})
     [void]$objForm.ShowDialog()
 
+    
+    #============= Winlogbeat ============#
+
     #Load Winlogbeat Credentials And Run
     "`nAdding Winlogbeat Credentials...`n"
-    Set-Location -Path 'c:\windows-monitoring\winlogbeat'
+    Set-Location -Path 'c:\windows-monitoring\server\winlogbeat'
 
     #Opens up YML file and inserts Kibana Host URL       
     (Get-Content winlogbeat.yml) |       
@@ -174,18 +153,36 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     .\winlogbeat.exe -e -configtest
 
     #Loads winlogbeat Preconfigured Dashboards
-    .\winlogbeat.exe setup --dashboards
+    #.\winlogbeat.exe setup --dashboards
 
     #Installs winlogbeat as a service
     .\install-service-winlogbeat.ps1
 
+    #Enable Windows EventLogging for USB Monitoring
+    $logName = 'Microsoft-Windows-DriverFrameworks-UserMode/Operational'
+ 
+    $log = New-Object System.Diagnostics.Eventing.Reader.EventLogConfiguration $logName
+    $log.IsEnabled=$true
+    $log.SaveChanges()
+ 
+    # check the state again
+    Get-WinEvent -ListLog Microsoft-Windows-DriverFrameworks-UserMode/Operational | Format-List is*
+
+    "`nUserMode Logging Enabled"
+ 
     #Runs winlogbeat as a Service
-    #Start-service winlogbeat
+    Start-service winlogbeat
+
+    #check status
+    Get-Service winlogbeat
+
+
+    #=========== Metricbeat ===========#
 
     #Load Metricbeat credentials and run
-    "`nAdding Metricbeat Credentials"
+    "`nAdding Metricbeat Credentials`n"
 
-    Set-Location -Path 'C:\windows-monitoring\metricbeat'
+    Set-Location -Path 'C:\windows-monitoring\server\metricbeat'
 
     #Opens up YML file and inserts Kibana URL
     (Get-Content metricbeat.yml) |
@@ -211,21 +208,24 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     .\metricbeat.exe -e -configtest
 
     #Load Metricbeat Preconfigured Dashboards
-    .\metricbeat.exe setup --dashboards
+    #.\metricbeat.exe setup --dashboards
 
     #Install metricbeat as a service
     .\install-service-metricbeat.ps1
 
     #Runs metricbeat as a Service
-    #Start-service metricbeat
+    Start-service metricbeat
 
     #Show that metricbeat is running
     Get-Service metricbeat
 
-    #Load Auditbeat credentials and run
-    "`nAdding Auditbeat Credentials"
 
-    Set-Location -Path 'C:\windows-monitoring\auditbeat'
+    #=========== Auditbeat ============#
+
+    #Load Auditbeat credentials
+    "`nAdding Auditbeat Credentials`n"
+
+    Set-Location -Path 'C:\windows-monitoring\server\auditbeat'
 
     #Opens up YML file and inserts Kibana URL
     (Get-Content auditbeat.yml) |
@@ -247,24 +247,146 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
         ForEach-Object {$_ -Replace 'elasticsearch-api-endpoint', "$($objTextBox4.Text)"} |
             Set-Content auditbeat.yml
 
-    #Runs the config test to make sure all data has been inputted correctly
-    .\auditbeat.exe -e -configtest
+    function Read-FolderBrowserDialog([string]$Message, [string]$InitialDirectory, [switch]$NoNewFolderButton) {
+        $browseForFolderOptions = 0
+        if ($NoNewFolderButton) { $browseForFolderOptions += 512 }
+    
+        $app = New-Object -ComObject Shell.Application
+        $folder = $app.BrowseForFolder(0, $Message, $browseForFolderOptions, $InitialDirectory)
+        if ($folder) { $selectedDirectory = $folder.Self.Path } else { $selectedDirectory = '' }
+        [System.Runtime.Interopservices.Marshal]::ReleaseComObject($app) > $null
+        return $selectedDirectory
+    }
+    
+    $directoryPath1 = Read-FolderBrowserDialog -Message "Select the folder you would like to audit for file changes." -InitialDirectory 'C:\' -NoNewFolderButton
+ 
+    if (![string]::IsNullOrEmpty($directoryPath1)) { 
+        Write-Host "`nYou selected the folder: $directoryPath1"  
+    }
+    else { 
+        "`nYou did not select a directory."
+    }
 
-    #Load auditbeat Preconfigured Dashboards
-    .\auditbeat.exe setup --dashboards
+    (Get-Content auditbeat.yml) |
+        ForEach-Object {$_ -Replace "auditbeat-path", "$($directoryPath1)\*"} |
+            Set-Content auditbeat.yml
 
     #Install auditbeat as a service
     .\install-service-auditbeat.ps1
 
-    #Runs auditbeat as a Service
-    #Start-service auditbeat
-
-    #Show that auditbeat is running
-    Get-Service auditbeat
+    #Start Auditbeat
+    Start-Service auditbeat
 
     
+    #=========== Filebeat ===========#
 
-    Set-Location -Path 'C:\Users\Administrator\Desktop\autoBeats'
+    #Load Filebeat credentials
+    "`nAdding Filebeat Credentials`n"
+
+    Set-Location -Path 'C:\windows-monitoring\filebeat'
+
+    #Opens up YML file and inserts Kibana URL
+    (Get-Content filebeat.yml) |
+        ForEach-Object {$_ -Replace 'host: ""', "host: ""$($objTextBox.Text)"""} |
+            Set-Content filebeat.yml
+
+    #Opens Up YML and sets Password
+    (Get-Content filebeat.yml) |       
+        ForEach-Object {$_ -Replace 'password: ""', "password: ""$($objTextBox3.Text)""" } |
+            Set-Content filebeat.yml
+
+    #Opens Up YML and sets Username
+    (Get-Content filebeat.yml) |       
+        ForEach-Object {$_ -Replace 'username: ""', "username: ""$($objTextBox2.Text)""" } |
+            Set-Content filebeat.yml
+
+    #Opens up YML file and inserts Elasticsearch API Endpoint
+    (Get-Content filebeat.yml) |
+        ForEach-Object {$_ -Replace 'elasticsearch-api-endpoint', "$($objTextBox4.Text)"} |
+            Set-Content filebeat.yml
+
+    function Read-FolderBrowserDialog([string]$Message, [string]$InitialDirectory, [switch]$NoNewFolderButton) {
+        $browseForFolderOptions = 0
+        if ($NoNewFolderButton) { $browseForFolderOptions += 512 }
+    
+        $app = New-Object -ComObject Shell.Application
+        $folder = $app.BrowseForFolder(0, $Message, $browseForFolderOptions, $InitialDirectory)
+        if ($folder) { $selectedDirectory = $folder.Self.Path } else { $selectedDirectory = '' }
+        [System.Runtime.Interopservices.Marshal]::ReleaseComObject($app) > $null
+        return $selectedDirectory
+    }
+    
+    $directoryPath = Read-FolderBrowserDialog -Message "Select the root folder you would like to monitor active directory permissions from." -InitialDirectory 'C:\' -NoNewFolderButton
+
+    #Conditional that doesn't let 
+    if (![string]::IsNullOrEmpty($directoryPath)) { 
+        Write-Host "`nYou selected the folder: $directoryPath"  
+    }
+    else { 
+        "`nYou did not select a directory."
+    }
+
+    (Get-Content filebeat.yml) |
+        ForEach-Object {$_ -Replace "filebeat-path", "$($directoryPath)\*"} |
+            Set-Content filebeat.yml
+
+    #Runs the config test to make sure all data has been inputted correctly
+    .\filebeat.exe -e -configtest
+
+    #Install filebeat as a service
+    .\install-service-filebeat.ps1
+
+    #Runs filebeat as a Service
+    Start-service filebeat
+
+    #Show that filebeat is running
+    Get-Service filebeat
+    
+    #Set Location to Auditbeat to select folders to audit        
+    Set-Location -Path 'C:\windows-monitoring\auditbeat'
+
+    #Run Auditbeat restart in the background
+    Start-Job -FilePath C:\windows-monitoring\scripts\auditbeatRestart.ps1
+
+    "`nRunning Auditbeat restart script`n"
+    
+    #Gets User Access Permissions Scripts
+    Set-Location -Path 'C:\'
+    New-Item -Path "C:\windows-monitoring" -Name "permissions" -ItemType "directory"
+
+    $FolderPath = Get-ChildItem -Directory -Path "$($directoryPath)" -Recurse -Force
+    $Output = @()
+
+    for(;;) {
+        try {
+            "`nGetting data from folder..."
+            ForEach ($Folder in $FolderPath) {
+                $Acl = Get-Acl -Path $Folder.FullName
+                    ForEach ($Access in $Acl.Access) {
+                        $Properties = [ordered]@{'Folder Name'=$Folder.FullName;'Group/User'=$Access.IdentityReference;'Permissions'=$Access.FileSystemRights;'Inherited'=$Access.IsInherited}
+                        $Output += New-Object -TypeName PSObject -Property $Properties            
+                    }
+            }
+                
+            $Response = $Output
+            "`nConverting data to CSV..."
+            $Response | export-csv c:\windows-monitoring\permissions\permissions.log -NoTypeInformation
+            
+            "`nSending data to outbound folder..."
+            $file="c:\windows-monitoring\permissions\permissions.log"
+            
+            (Get-Content $file) | Foreach-Object {$_ -replace '"', ''}|Out-File $file -Encoding UTF8
+    
+            "`nData sent successfully!"
+        }
+        catch {
+            "`nFailed to access folder. Retrying..."
+        }
+    
+        Start-Sleep 900
+        "`nChecking folder for changes..."
+        #$Response | Out-GridView
+    }
 }
 else {
     Start-Process -FilePath "powershell" -ArgumentList "$('-File ""')$(Get-Location)$('\')$($MyInvocation.MyCommand.Name)$('""')" -Verb runAs
