@@ -19,7 +19,7 @@ Currently provides the following features that will be monitored:
 
 ### Installation & Setup
 
-1 . Download the zip file package
+1. Download the zip file package
 
 [Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
 
