@@ -5,7 +5,7 @@
 $principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
 if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    "Running Powershell with full privileges"
+    "`nRunning Powershell with full privileges"
 
     #Rename Folder
     Rename-Item 'C:\windows-monitoring-master' 'C:\windows-monitoring'
@@ -21,7 +21,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
 
     Set-Location -Path 'c:\windows-monitoring\local\metricbeat'
     Set-ExecutionPolicy Unrestricted
-    "Metricbeat Execution policy set - Success"
+    "Metricbeat Execution policy set - Success`n"
 
     Set-Location -Path 'c:\windows-monitoring'
 
