@@ -23,5 +23,5 @@ Currently provides the following features that will be monitored:
 
    [Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
 
-2. Unzip the package and send to <b>C:/</b> drive.
+2. Unzip the package and extract the contents to the <b>C:/</b> drive.
 
