@@ -2,7 +2,7 @@
 
 This program provides security and application monitoring to windows computers and servers complete with highly engaging visuals and alerting.
 
-Provides the following features that will be monitored:
+Currently provides the following features that will be monitored:
 
 <b>Local Terminals:</b>
 - External device plugins and data transfer monitoring
