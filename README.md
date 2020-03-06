@@ -12,3 +12,7 @@ Provides the following features that will be monitored:
 
 
 <b>Servers</b>
+- All installed services by user or system monitoring
+- File changes monitoring
+- Successful/unsuccessful logons monitoring
+- Active directory user permissions monitoring
