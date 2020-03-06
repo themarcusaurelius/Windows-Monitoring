@@ -22,5 +22,5 @@ Currently provides the following features that will be monitored:
 1 . Download the zip file package
 
 
-[Zip File](https://app.vizion.ai/)
+[Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
 
