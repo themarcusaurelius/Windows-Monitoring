@@ -18,3 +18,9 @@ Currently provides the following features that will be monitored:
 - Active directory user permissions monitoring
 
 ### Installation & Setup
+
+1 . Download the package as a zip drive
+
+```
+
+```
