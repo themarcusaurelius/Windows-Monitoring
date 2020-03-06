@@ -21,7 +21,7 @@ Currently provides the following features that will be monitored:
 
 1. Download the zip file package
 
-[Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
+   [Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
 
 2. Unzip the package and send to <b>C:/</b> drive.
 
