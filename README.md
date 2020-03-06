@@ -1,6 +1,6 @@
 # Complete Windows Monitoring Package
 
-This program provides security and application monitoring to windows computers and servers complete with highly engaging visuals and alerting.
+This program provides security and application monitoring to Windows computers and servers complete with visuals and alerting.
 
 Currently provides the following features that will be monitored:
 
@@ -23,4 +23,6 @@ Currently provides the following features that will be monitored:
 
 
 [Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
+
+2. Unzip the package and send to <b>C:/</b> drive.
 
