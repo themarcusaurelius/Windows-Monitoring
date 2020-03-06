@@ -19,8 +19,8 @@ Currently provides the following features that will be monitored:
 
 ### Installation & Setup
 
-1 . Download the package as a zip drive
+1 . Download the zip file package
 
 ```
-
+https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip
 ```
