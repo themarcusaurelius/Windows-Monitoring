@@ -2,31 +2,31 @@
 auditbeat.modules:
 - module: file_integrity
   paths:
-  - D:/*
-  - D:/*/*
-  - E:/*
-  - F:/*
-  - G:/*
-  - H:/*
-  - I:/*
-  - J:/*
-  - L:/*
-  - K:/*
-  - M:/*
-  - N:/*
-  - O:/*
-  - P:/*
-  - Q:/*
-  - R:/*
-  - S:/*
-  - T:/*
-  - U:/*
-  - V:/*
-  - W:/*
-  - X:/*
-  - Y:/*
-  - Z:/*
-  - auditbeat-path
+    - D:/*
+    - D:/*/*
+    - E:/*
+    - F:/*
+    - G:/*
+    - H:/*
+    - I:/*
+    - J:/*
+    - L:/*
+    - K:/*
+    - M:/*
+    - N:/*
+    - O:/*
+    - P:/*
+    - Q:/*
+    - R:/*
+    - S:/*
+    - T:/*
+    - U:/*
+    - V:/*
+    - W:/*
+    - X:/*
+    - Y:/*
+    - Z:/*
+    - auditbeat-path
 
 #==================== Elasticsearch template setting ==========================
 setup.template.settings:

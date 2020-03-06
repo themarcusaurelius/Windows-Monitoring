@@ -261,7 +261,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     }
 
     (Get-Content auditbeat.yml) |
-        ForEach-Object {$_ -Replace "auditbeat-path", "$($directoryPath1)\*"} |
+        ForEach-Object {$_ -Replace "auditbeat-path", "$($directoryPath1)"} |
             Set-Content auditbeat.yml
 
     #Install auditbeat as a service
