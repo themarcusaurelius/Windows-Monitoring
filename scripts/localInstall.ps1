@@ -1,3 +1,36 @@
+﻿##[Ps1 To Exe]
+##
+##Kd3HDZOFADWE8uK1
+##Nc3NCtDXThU=
+##Kd3HFJGZHWLWoLaVvnQnhQ==
+##LM/RF4eFHHGZ7/K1
+##K8rLFtDXTiW5
+##OsHQCZGeTiiZ4tI=
+##OcrLFtDXTiW5
+##LM/BD5WYTiiZ4tI=
+##McvWDJ+OTiiZ4tI=
+##OMvOC56PFnzN8u+Vs1Q=
+##M9jHFoeYB2Hc8u+Vs1Q=
+##PdrWFpmIG2HcofKIo2QX
+##OMfRFJyLFzWE8uK1
+##KsfMAp/KUzWI0g==
+##OsfOAYaPHGbQvbyVvnQX
+##LNzNAIWJGmPcoKHc7Do3uAuO
+##LNzNAIWJGnvYv7eVvnRb6kjvTigcZ8uftqG0hLG9/OHtvCC5
+##M9zLA5mED3nfu77Q7TV64AuzAgg=
+##NcDWAYKED3nfu77Q7TV64AuzAgg=
+##OMvRB4KDHmHQvbyVvnRW9VviS2sqesyUt/azzICov+PiqDHYRZYHCUN+mCXzA0m4WOZeFfgQoMMYVh8vLuZHorPeH6eoUKYDhuF6avHOqbxpGVXb4p+03hiRx5TOGx8iNg==
+##P8HPFJGEFzWE8tI=
+##KNzDAJWHD2fS8u+Vgw==
+##P8HSHYKDCX3N8u+V1T1t7ETgDGkiLpfL6+bH
+##LNzLEpGeC3fMu77Ro2k3hQ==
+##L97HB5mLAnfMu77Ro2k3hQ==
+##P8HPCZWEGmaZ7/K1
+##L8/UAdDXTlaDjofG5iZk2UbjQ3EtZ8CXvYqDwZK36+X8hzbcW4wRWxlnlyr3BUy4ZeERR/wFoMItWRIpLv4i7KHEGuulC6cSl4M=
+##Kc/BRM3KXxU=
+##
+##
+##fd6a9f26a06ea3bc99616d4851b372ba
 Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope CurrentUser	
 Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope LocalMachine
 Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope Process
