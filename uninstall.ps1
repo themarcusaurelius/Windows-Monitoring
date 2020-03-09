@@ -2,45 +2,46 @@ $principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.
 
 if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     # code here...
-    Set-Location -Path 'C:\windows-monitoring-master\local\winlogbeat'
+    try {
+        Set-Location -Path 'C:\windows-monitoring-master\local\winlogbeat'
 
-    Stop-Service -Force winlogbeat
+        Stop-Service -Force winlogbeat
 
-    "`nWinlogbeat Stopped"
+        Get-Service winlogbeat
+        
+        #Change Directory to Filebeat5
+        Set-Location -Path 'C:\windows-monitoring-master\local\metricbeat'
 
-    Get-Service winlogbeat
-    
-    #Change Directory to Filebeat5
-    Set-Location -Path 'C:\windows-monitoring-master\local\metricbeat'
+        #Stops apachebeat from running
+        Stop-Service -Force metricbeat
 
-    #Stops apachebeat from running
-    Stop-Service -Force metricbeat
+        #Get The apachebeat Status
+        Get-Service metricbeat
 
-    "`nMetricbeat Stopped"
+        Set-Location -Path 'C:\windows-monitoring-master\local\auditbeat'
 
-    #Get The apachebeat Status
-    Get-Service metricbeat
+        Stop-Service -Force auditbeat
 
-    Set-Location -Path 'C:\windows-monitoring-master\local\auditbeat'
+        Get-Service auditbeat
 
-    Stop-Service -Force auditbeat
+        #Change Directory to apachebeat5
+        Set-Location -Path 'c:\'
 
-    "`n Auditbeat Stopped"
+        "`nUninstalling Windows-Monitoring Now..."
 
-    Get-Service auditbeat
+        $Target = "C:\windows-monitoring-master"
 
-    #Change Directory to apachebeat5
-    Set-Location -Path 'c:\'
+        Get-ChildItem -Path $Target -Recurse -force |
+            Where-Object { -not ($_.pscontainer)} |
+                Remove-Item -Force -Recurse
 
-    'Uninstalling Windows-Monitoring Now...'
+        Remove-Item -Recurse -Force $Target
 
-    $Target = "C:\windows-monitoring-master"
-
-    Get-ChildItem -Path $Target -Recurse -force |
-        Where-Object { -not ($_.pscontainer)} |
-            Remove-Item -Force -Recurse
-
-    Remove-Item -Recurse -Force $Target
+        Pause
+    } catch {
+        Write-Error $_.Exception.ToString()
+        Read-Host -Prompt "The above error occurred. Press Enter to exit." 
+    }  
 }
 else {
     Start-Process -FilePath "powershell" -ArgumentList "$('-File ""')$(Get-Location)$('\')$($MyInvocation.MyCommand.Name)$('""')" -Verb runAs

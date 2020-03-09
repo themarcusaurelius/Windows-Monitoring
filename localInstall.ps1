@@ -271,15 +271,20 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     Start-Service auditbeat
 
     #Run Auditbeat restart in the background
-    Start-Job -FilePath "C:\windows-monitoring-master\scripts\auditbeatRestart.ps1"
+    ##Start-Job -FilePath "C:\windows-monitoring-master\scripts\auditbeatRestart.ps1"
 
-    powershell.exe -windowstyle hidden -file C:\windows-monitoring-master\scripts\auditbeatRestart.ps1
+    ##powershell.exe -windowstyle hidden -file C:\windows-monitoring-master\scripts\auditbeatRestart.ps1
+
+    Set-Location -Path 'C:\windows-monitoring-master\scripts'
 
     "`nRunning Auditbeat Refresh For External Devices"
 
-    Start-Sleep 5
+    .\auditbeatRestart.ps1
+
     #Close Powershell window
     #Stop-Process -Id $PID
+
+    Pause
 }
 else {
     Start-Process -FilePath "powershell" -ArgumentList "$('-File ""')$(Get-Location)$('\')$($MyInvocation.MyCommand.Name)$('""')" -Verb runAs
