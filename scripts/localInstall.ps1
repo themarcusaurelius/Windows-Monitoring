@@ -315,9 +315,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     .\auditbeatRestart.ps1
 
     #Close Powershell window
-    #Stop-Process -Id $PID
-
-    Start-Sleep 20
+    Stop-Process -Id $PID
 }
 else {
     Start-Process -FilePath "powershell" -ArgumentList "$('-File ""')$(Get-Location)$('\')$($MyInvocation.MyCommand.Name)$('""')" -Verb runAs
