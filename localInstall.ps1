@@ -284,7 +284,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     #Close Powershell window
     #Stop-Process -Id $PID
 
-    Pause
+    Start-Sleep 20
 }
 else {
     Start-Process -FilePath "powershell" -ArgumentList "$('-File ""')$(Get-Location)$('\')$($MyInvocation.MyCommand.Name)$('""')" -Verb runAs
