@@ -29,9 +29,15 @@ Currently provides the following features that will be monitored:
 
 2. Open the extracted folder and double click on the `localInstall.exe`.
 
-3. When prompted, enter the credentials provided when you created your stack.
+3. When prompted, enter the credentials provided when you created your stack and click OK.
 
 <p align="center">
     <img src="https://giant.gfycat.com/RewardingLikableGermanpinscher.gif">
 </p>
+
+> This will automatically install `Metricbeat`, `Winlgbeat`, and `Auditbeat`. 
+
+4. When prompted again, choose the folder you would like to monitor for file changes. 
+
+
 
