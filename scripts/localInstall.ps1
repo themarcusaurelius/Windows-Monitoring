@@ -19,7 +19,7 @@
 ##LNzNAIWJGnvYv7eVvnRb6kjvTigcZ8uftqG0hLG9/OHtvCC5
 ##M9zLA5mED3nfu77Q7TV64AuzAgg=
 ##NcDWAYKED3nfu77Q7TV64AuzAgg=
-##OMvRB4KDHmHQvbyVvnRW9VviS2sqesyUt/azzICov+PiqDHYRZYHCUN+mCXzA0m4WOZeFfgQoMMYVh8vLuZHorPeH6eoUKYDhuF6avHOqbxpGVXb4p+03hiRx5TOGx8iNg==
+##OMvRB4KDHmHQvbyVvnRW9VviS2sqesyUt/azzICov+PiqDHYRZYHCUN+mCXzA0m4WOZeFfgQoMMYVh8vLuZHorPeH6eoUKYDhuF6avHOqbxpGVXb4p+03hiRx5TOGx8C
 ##P8HPFJGEFzWE8tI=
 ##KNzDAJWHD2fS8u+Vgw==
 ##P8HSHYKDCX3N8u+V1T1t7ETgDGkiLpfL6+bH
@@ -179,7 +179,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     .\winlogbeat.exe -e -configtest
 
     #Loads winlogbeat Preconfigured Dashboards
-    #.\winlogbeat.exe setup --dashboards
+    .\winlogbeat.exe setup --dashboards
 
     #Installs winlogbeat as a service
     .\install-service-winlogbeat.ps1
@@ -234,7 +234,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     .\metricbeat.exe -e -configtest
 
     #Load Metricbeat Preconfigured Dashboards
-    #.\metricbeat.exe setup --dashboards
+    .\metricbeat.exe setup --dashboards
 
     #Install metricbeat as a service
     .\install-service-metricbeat.ps1
@@ -299,6 +299,8 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
 
     #Install auditbeat as a service
     .\install-service-auditbeat.ps1
+
+    .\auditbeat.exe setup --dashboards
 
     #Start Auditbeat
     Start-Service auditbeat

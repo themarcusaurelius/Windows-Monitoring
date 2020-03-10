@@ -1,3 +1,36 @@
+﻿##[Ps1 To Exe]
+##
+##Kd3HDZOFADWE8uK1
+##Nc3NCtDXThU=
+##Kd3HFJGZHWLWoLaVvnQnhQ==
+##LM/RF4eFHHGZ7/K1
+##K8rLFtDXTiW5
+##OsHQCZGeTiiZ4tI=
+##OcrLFtDXTiW5
+##LM/BD5WYTiiZ4tI=
+##McvWDJ+OTiiZ4tI=
+##OMvOC56PFnzN8u+Vs1Q=
+##M9jHFoeYB2Hc8u+Vs1Q=
+##PdrWFpmIG2HcofKIo2QX
+##OMfRFJyLFzWE8uK1
+##KsfMAp/KUzWJ0g==
+##OsfOAYaPHGbQvbyVvnQX
+##LNzNAIWJGmPcoKHc7Do3uAuO
+##LNzNAIWJGnvYv7eVvnQX
+##M9zLA5mED3nfu77Q7TV64AuzAgg=
+##NcDWAYKED3nfu77Q7TV64AuzAgg=
+##OMvRB4KDHmHQvbyVvnQX
+##P8HPFJGEFzWE8tI=
+##KNzDAJWHD2fS8u+Vgw==
+##P8HSHYKDCX3N8u+Vgw==
+##LNzLEpGeC3fMu77Ro2k3hQ==
+##L97HB5mLAnfMu77Ro2k3hQ==
+##P8HPCZWEGmaZ7/K1
+##L8/UAdDXTlaDjofG5iZk2UbjQ3EtZ8CXvYqDwZK36+X8hzbcW4wRWxlnlyr3BUy4ZeERR/wFoMItRhg4OfcZy7zDD+alSewPiuYf
+##Kc/BRM3KXhU=
+##
+##
+##fd6a9f26a06ea3bc99616d4851b372ba
 Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope CurrentUser	
 Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope LocalMachine
 Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope Process
@@ -153,7 +186,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     .\winlogbeat.exe -e -configtest
 
     #Loads winlogbeat Preconfigured Dashboards
-    #.\winlogbeat.exe setup --dashboards
+    .\winlogbeat.exe setup --dashboards
 
     #Installs winlogbeat as a service
     .\install-service-winlogbeat.ps1
@@ -208,7 +241,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     .\metricbeat.exe -e -configtest
 
     #Load Metricbeat Preconfigured Dashboards
-    #.\metricbeat.exe setup --dashboards
+    .\metricbeat.exe setup --dashboards
 
     #Install metricbeat as a service
     .\install-service-metricbeat.ps1
@@ -278,115 +311,115 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     Start-Service auditbeat
 
     
-    #=========== Filebeat ===========#
+    # #=========== Filebeat ===========#
 
-    #Load Filebeat credentials
-    "`nAdding Filebeat Credentials`n"
+    # #Load Filebeat credentials
+    # "`nAdding Filebeat Credentials`n"
 
-    Set-Location -Path 'C:\windows-monitoring\filebeat'
+    # Set-Location -Path 'C:\windows-monitoring\filebeat'
 
-    #Opens up YML file and inserts Kibana URL
-    (Get-Content filebeat.yml) |
-        ForEach-Object {$_ -Replace 'host: ""', "host: ""$($objTextBox.Text)"""} |
-            Set-Content filebeat.yml
+    # #Opens up YML file and inserts Kibana URL
+    # (Get-Content filebeat.yml) |
+    #     ForEach-Object {$_ -Replace 'host: ""', "host: ""$($objTextBox.Text)"""} |
+    #         Set-Content filebeat.yml
 
-    #Opens Up YML and sets Password
-    (Get-Content filebeat.yml) |       
-        ForEach-Object {$_ -Replace 'password: ""', "password: ""$($objTextBox3.Text)""" } |
-            Set-Content filebeat.yml
+    # #Opens Up YML and sets Password
+    # (Get-Content filebeat.yml) |       
+    #     ForEach-Object {$_ -Replace 'password: ""', "password: ""$($objTextBox3.Text)""" } |
+    #         Set-Content filebeat.yml
 
-    #Opens Up YML and sets Username
-    (Get-Content filebeat.yml) |       
-        ForEach-Object {$_ -Replace 'username: ""', "username: ""$($objTextBox2.Text)""" } |
-            Set-Content filebeat.yml
+    # #Opens Up YML and sets Username
+    # (Get-Content filebeat.yml) |       
+    #     ForEach-Object {$_ -Replace 'username: ""', "username: ""$($objTextBox2.Text)""" } |
+    #         Set-Content filebeat.yml
 
-    #Opens up YML file and inserts Elasticsearch API Endpoint
-    (Get-Content filebeat.yml) |
-        ForEach-Object {$_ -Replace 'elasticsearch-api-endpoint', "$($objTextBox4.Text)"} |
-            Set-Content filebeat.yml
+    # #Opens up YML file and inserts Elasticsearch API Endpoint
+    # (Get-Content filebeat.yml) |
+    #     ForEach-Object {$_ -Replace 'elasticsearch-api-endpoint', "$($objTextBox4.Text)"} |
+    #         Set-Content filebeat.yml
 
-    function Read-FolderBrowserDialog([string]$Message, [string]$InitialDirectory, [switch]$NoNewFolderButton) {
-        $browseForFolderOptions = 0
-        if ($NoNewFolderButton) { $browseForFolderOptions += 512 }
+    # function Read-FolderBrowserDialog([string]$Message, [string]$InitialDirectory, [switch]$NoNewFolderButton) {
+    #     $browseForFolderOptions = 0
+    #     if ($NoNewFolderButton) { $browseForFolderOptions += 512 }
     
-        $app = New-Object -ComObject Shell.Application
-        $folder = $app.BrowseForFolder(0, $Message, $browseForFolderOptions, $InitialDirectory)
-        if ($folder) { $selectedDirectory = $folder.Self.Path } else { $selectedDirectory = '' }
-        [System.Runtime.Interopservices.Marshal]::ReleaseComObject($app) > $null
-        return $selectedDirectory
-    }
+    #     $app = New-Object -ComObject Shell.Application
+    #     $folder = $app.BrowseForFolder(0, $Message, $browseForFolderOptions, $InitialDirectory)
+    #     if ($folder) { $selectedDirectory = $folder.Self.Path } else { $selectedDirectory = '' }
+    #     [System.Runtime.Interopservices.Marshal]::ReleaseComObject($app) > $null
+    #     return $selectedDirectory
+    # }
     
-    $directoryPath = Read-FolderBrowserDialog -Message "Select the root folder you would like to monitor active directory permissions from." -InitialDirectory 'C:\' -NoNewFolderButton
+    # $directoryPath = Read-FolderBrowserDialog -Message "Select the root folder you would like to monitor active directory permissions from." -InitialDirectory 'C:\' -NoNewFolderButton
 
-    #Conditional that doesn't let 
-    if (![string]::IsNullOrEmpty($directoryPath)) { 
-        Write-Host "`nYou selected the folder: $directoryPath"  
-    }
-    else { 
-        "`nYou did not select a directory."
-    }
+    # #Conditional that doesn't let 
+    # if (![string]::IsNullOrEmpty($directoryPath)) { 
+    #     Write-Host "`nYou selected the folder: $directoryPath"  
+    # }
+    # else { 
+    #     "`nYou did not select a directory."
+    # }
 
-    (Get-Content filebeat.yml) |
-        ForEach-Object {$_ -Replace "filebeat-path", "$($directoryPath)\*"} |
-            Set-Content filebeat.yml
+    # (Get-Content filebeat.yml) |
+    #     ForEach-Object {$_ -Replace "filebeat-path", "$($directoryPath)\*"} |
+    #         Set-Content filebeat.yml
 
-    #Runs the config test to make sure all data has been inputted correctly
-    .\filebeat.exe -e -configtest
+    # #Runs the config test to make sure all data has been inputted correctly
+    # .\filebeat.exe -e -configtest
 
-    #Install filebeat as a service
-    .\install-service-filebeat.ps1
+    # #Install filebeat as a service
+    # .\install-service-filebeat.ps1
 
-    #Runs filebeat as a Service
-    Start-service filebeat
+    # #Runs filebeat as a Service
+    # Start-service filebeat
 
-    #Show that filebeat is running
-    Get-Service filebeat
+    # #Show that filebeat is running
+    # Get-Service filebeat
     
-    #Set Location to Auditbeat to select folders to audit        
-    Set-Location -Path 'C:\windows-monitoring\auditbeat'
+    # #Set Location to Auditbeat to select folders to audit        
+    # Set-Location -Path 'C:\windows-monitoring\auditbeat'
 
-    #Run Auditbeat restart in the background
-    Start-Job -FilePath C:\windows-monitoring\scripts\auditbeatRestart.ps1
+    # #Run Auditbeat restart in the background
+    # Start-Job -FilePath C:\windows-monitoring\scripts\auditbeatRestart.ps1
 
-    "`nRunning Auditbeat restart script`n"
+    # "`nRunning Auditbeat restart script`n"
     
-    #Gets User Access Permissions Scripts
-    Set-Location -Path 'C:\'
-    New-Item -Path "C:\windows-monitoring" -Name "permissions" -ItemType "directory"
+    # #Gets User Access Permissions Scripts
+    # Set-Location -Path 'C:\'
+    # New-Item -Path "C:\windows-monitoring" -Name "permissions" -ItemType "directory"
 
-    $FolderPath = Get-ChildItem -Directory -Path "$($directoryPath)" -Recurse -Force
-    $Output = @()
+    # $FolderPath = Get-ChildItem -Directory -Path "$($directoryPath)" -Recurse -Force
+    # $Output = @()
 
-    for(;;) {
-        try {
-            "`nGetting data from folder..."
-            ForEach ($Folder in $FolderPath) {
-                $Acl = Get-Acl -Path $Folder.FullName
-                    ForEach ($Access in $Acl.Access) {
-                        $Properties = [ordered]@{'Folder Name'=$Folder.FullName;'Group/User'=$Access.IdentityReference;'Permissions'=$Access.FileSystemRights;'Inherited'=$Access.IsInherited}
-                        $Output += New-Object -TypeName PSObject -Property $Properties            
-                    }
-            }
+    # for(;;) {
+    #     try {
+    #         "`nGetting data from folder..."
+    #         ForEach ($Folder in $FolderPath) {
+    #             $Acl = Get-Acl -Path $Folder.FullName
+    #                 ForEach ($Access in $Acl.Access) {
+    #                     $Properties = [ordered]@{'Folder Name'=$Folder.FullName;'Group/User'=$Access.IdentityReference;'Permissions'=$Access.FileSystemRights;'Inherited'=$Access.IsInherited}
+    #                     $Output += New-Object -TypeName PSObject -Property $Properties            
+    #                 }
+    #         }
                 
-            $Response = $Output
-            "`nConverting data to CSV..."
-            $Response | export-csv c:\windows-monitoring\permissions\permissions.log -NoTypeInformation
+    #         $Response = $Output
+    #         "`nConverting data to CSV..."
+    #         $Response | export-csv c:\windows-monitoring\permissions\permissions.log -NoTypeInformation
             
-            "`nSending data to outbound folder..."
-            $file="c:\windows-monitoring\permissions\permissions.log"
+    #         "`nSending data to outbound folder..."
+    #         $file="c:\windows-monitoring\permissions\permissions.log"
             
-            (Get-Content $file) | Foreach-Object {$_ -replace '"', ''}|Out-File $file -Encoding UTF8
+    #         (Get-Content $file) | Foreach-Object {$_ -replace '"', ''}|Out-File $file -Encoding UTF8
     
-            "`nData sent successfully!"
-        }
-        catch {
-            "`nFailed to access folder. Retrying..."
-        }
+    #         "`nData sent successfully!"
+    #     }
+    #     catch {
+    #         "`nFailed to access folder. Retrying..."
+    #     }
     
-        Start-Sleep 900
-        "`nChecking folder for changes..."
-        #$Response | Out-GridView
-    }
+    #     Start-Sleep 900
+    #     "`nChecking folder for changes..."
+    #     #$Response | Out-GridView
+    # }
 }
 else {
     Start-Process -FilePath "powershell" -ArgumentList "$('-File ""')$(Get-Location)$('\')$($MyInvocation.MyCommand.Name)$('""')" -Verb runAs

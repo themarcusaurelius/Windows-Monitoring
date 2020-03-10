@@ -61,6 +61,8 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
 
         Get-Service auditbeat
 
+        Remove-Item -Recurse -Force 'C:\windows-monitoring-master\local\auditbeat'
+
         #Change Directory to apachebeat5
         Set-Location -Path 'c:\'
 
@@ -74,10 +76,9 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
 
         Remove-Item -Recurse -Force $Target
 
-        Pause
     } catch {
-        Write-Error $_.Exception.ToString()
-        Read-Host -Prompt "The above error occurred. Press Enter to exit." 
+        #Write-Error $_.Exception.ToString()
+        #Read-Host -Prompt "The above error occurred. Press Enter to exit." 
     }  
 }
 else {
