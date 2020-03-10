@@ -35,7 +35,7 @@ Currently provides the following features that will be monitored:
     <img src="https://giant.gfycat.com/RewardingLikableGermanpinscher.gif">
 </p>
 
-> This will automatically install `Metricbeat`, `Winlgbeat`, and `Auditbeat`. 
+> This will automatically install `Metricbeat`, `Winlogbeat`, and `Auditbeat`. 
 
 4. When prompted again, choose the folder you would like to monitor for file changes. 
 
