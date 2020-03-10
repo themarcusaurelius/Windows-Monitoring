@@ -25,6 +25,6 @@ Currently provides the following features that will be monitored:
    
 #### Local Install:
 
-1. Unzip the package and extract the contents to the `<b>C:/</b>` drive.
+1. Unzip the package and extract the contents to the `C:/` drive.
 
 2. Open the extracted folder and double click on the `localInstall.exe`
