@@ -19,10 +19,12 @@ Currently provides the following features that will be monitored:
 
 ### Installation & Setup
 
-1. Download the zip file package to yourl oval machine using the link below:
+1. Download the zip file package to your local machine using the link below:
 
    [Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
+   
+#### Local Install:
 
-2. Unzip the package and extract the contents to the <b>C:/</b> drive.
+1. Unzip the package and extract the contents to the <b>C:/</b> drive.
 
-3. Import 
+2. Open the extracted folder and double click on the `localInstall.exe`
