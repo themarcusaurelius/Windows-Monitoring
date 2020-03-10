@@ -30,3 +30,8 @@ Currently provides the following features that will be monitored:
 2. Open the extracted folder and double click on the `localInstall.exe`.
 
 3. When prompted, enter the credentials provided when you created your stack.
+
+<p align="center">
+    <img src="https://giant.gfycat.com/RewardingLikableGermanpinscher.gif">
+</p>
+
