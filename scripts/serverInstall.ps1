@@ -38,29 +38,21 @@ Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope Process
 $principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
 if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    "Running Powershell with full privileges"
+    "`nRunning Powershell with full privileges`n"
 
-    #Rename Folder
-    Rename-Item 'C:\windows-monitoring-master' 'C:\windows-monitoring'
-
-    #CD's into Folder to set the execution policies
-    Set-Location -Path 'c:\windows-monitoring\filebeat'
-    Set-ExecutionPolicy Unrestricted
-    "`nFilebeat Execution policy set - Success"
-
-    Set-Location -Path 'c:\windows-monitoring\winlogbeat'
+    Set-Location -Path 'c:\windows-monitoring-master\server\winlogbeat'
     Set-ExecutionPolicy Unrestricted
     "Winlogbeat Execution policy set - Success"
 
-    Set-Location -Path 'c:\windows-monitoring\auditbeat'
+    Set-Location -Path 'c:\windows-monitoring-master\server\auditbeat'
     Set-ExecutionPolicy Unrestricted
     "Auditbeat Execution policy set - Success"
 
-    Set-Location -Path 'c:\windows-monitoring\metricbeat'
+    Set-Location -Path 'c:\windows-monitoring-master\server\metricbeat'
     Set-ExecutionPolicy Unrestricted
-    "Metricbeat Execution policy set - Success"
+    "Metricbeat Execution policy set - Success`n"
 
-    Set-Location -Path 'c:\windows-monitoring'
+    Set-Location -Path 'c:\windows-monitoring-master'
 
     #GUI To Insert User Credentials
     #Pop-up Box that Adds Credentials 
