@@ -27,4 +27,6 @@ Currently provides the following features that will be monitored:
 
 1. Unzip the package and extract the contents to the `C:/` drive.
 
-2. Open the extracted folder and double click on the `localInstall.exe`
+2. Open the extracted folder and double click on the `localInstall.exe`.
+
+3. When prompted, enter the credentials provided when you created your stack.
