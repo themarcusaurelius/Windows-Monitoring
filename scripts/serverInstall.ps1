@@ -152,7 +152,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
 
     #Load Winlogbeat Credentials And Run
     "`nAdding Winlogbeat Credentials...`n"
-    Set-Location -Path 'c:\windows-monitoring\server\winlogbeat'
+    Set-Location -Path 'c:\windows-monitoring-master\server\winlogbeat'
 
     #Opens up YML file and inserts Kibana Host URL       
     (Get-Content winlogbeat.yml) |       
@@ -207,7 +207,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     #Load Metricbeat credentials and run
     "`nAdding Metricbeat Credentials`n"
 
-    Set-Location -Path 'C:\windows-monitoring\server\metricbeat'
+    Set-Location -Path 'C:\windows-monitoring-master\server\metricbeat'
 
     #Opens up YML file and inserts Kibana URL
     (Get-Content metricbeat.yml) |
@@ -250,7 +250,7 @@ if($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) 
     #Load Auditbeat credentials
     "`nAdding Auditbeat Credentials`n"
 
-    Set-Location -Path 'C:\windows-monitoring\server\auditbeat'
+    Set-Location -Path 'C:\windows-monitoring-master\server\auditbeat'
 
     #Opens up YML file and inserts Kibana URL
     (Get-Content auditbeat.yml) |
