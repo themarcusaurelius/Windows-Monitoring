@@ -61,7 +61,7 @@ Elasticsearch API Endpoint: api-endpoint
 
 3. Open the extracted folder and double click on the `serverInstall.exe`.
 
-4. When prompted, enter the credentials provided when you created your stack and click OK.
+4. When prompted, enter your credentials below and click OK.
 
 ```css
 Kibana URL: kibana-url
