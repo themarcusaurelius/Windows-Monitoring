@@ -82,5 +82,9 @@ Elasticsearch API Endpoint: api-endpoint
 
 5. When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. If you do not wish to monitor any folders at this time, click `Cancel` to exit.
 
+Your data is now shipping!
+
+> If this is your first time loading data into your elasticsearch instance, you will need to set one of the indices as a default in order to begin seeing logs shipping in real-time. To do this, go to the `Index Patterns` section in the `Management` tab and star the index you would like as a default. In the `Discover` tab you should start to see your incoming logs.
+
 
 
