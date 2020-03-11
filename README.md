@@ -63,6 +63,13 @@ Elasticsearch API Endpoint: api-endpoint
 
 4. When prompted, enter the credentials provided when you created your stack and click OK.
 
+```css
+Kibana URL: kibana-url
+Username: username
+Password: password
+Elasticsearch API Endpoint: api-endpoint
+```
+
 > This will automatically configure and install `Metricbeat`, `Winlogbeat`, and `Auditbeat` as well as load any pre-packaged dashboards . 
 
 5. When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. If you do not wish to monitor any folders at this time, click `Cancel` to exit.
