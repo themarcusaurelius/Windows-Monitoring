@@ -56,5 +56,7 @@ Currently provides the following features that will be monitored:
 
 4. When prompted, enter the credentials provided when you created your stack and click OK.
 
+> This will automatically configure and install `Metricbeat`, `Winlogbeat`, and `Auditbeat` as well as load any pre-packaged dashboards . 
+
 
 
