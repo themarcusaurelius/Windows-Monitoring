@@ -37,6 +37,10 @@ Currently provides the following features that will be monitored:
 
 > This will automatically configure and install `Metricbeat`, `Winlogbeat`, and `Auditbeat` as well as load any pre-packaged dashboards . 
 
+<div class="bg-green-light mb-2">
+  .text-gray-dark on .bg-green-light
+</div>
+
 4. When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. 
 
 <p align="center">
