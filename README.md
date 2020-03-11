@@ -43,6 +43,8 @@ Currently provides the following features that will be monitored:
     <img src="https://giant.gfycat.com/DelayedSandyHammerheadbird.gif">
 </p>
 
+<b>Congratulations! Your local machine is now connected!</b>
+
 
 
 
