@@ -55,7 +55,16 @@ Elasticsearch API Endpoint: api-endpoint
 
 #### Server Install
 
-1. Copy and paste the downloaded Zip folder from the local machine to the server. 
+1. Get the Zip package on the server.
+
+   - Option A: Copy and paste the downloaded Zip folder from the local machine to the server.
+   
+   - Option B: In Powershell, as administrator, run the following request:
+   
+   ```
+   Start-BitsTransfer -Source 'https://github.com/themarcusaurelius/windows-monitoring/archive/m
+aster.zip' -Destination 'C:\Users\Administrator\Downloads\windows-monitoring-master.zip'
+   ```
 
 2. Unzip the package and extract the contents to the `C:/` drive.
 
