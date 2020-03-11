@@ -32,10 +32,10 @@ Currently provides the following features that will be monitored:
 3. When prompted, enter your credentials below and click OK.
 
 ```diff
-+ Kibana URL: kibana-url
-+ Username: username
-+ Password: password
-+ Elasticsearch API Endpoint: api-endpoint
+Kibana URL: + kibana-url
+Username: + username
+Password: + password
+Elasticsearch API Endpoint: + api-endpoint
 ```
 
 <p align="center">
