@@ -29,7 +29,7 @@ Currently provides the following features that will be monitored:
 
 2. Open the extracted folder and double click on the `localInstall.exe`.
 
-3. When prompted, enter your credentials below click OK.
+3. When prompted, enter your credentials below and click OK.
 
 ```
 Kibana URL: kibana-url
