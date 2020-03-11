@@ -40,7 +40,7 @@ Currently provides the following features that will be monitored:
 4. When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. 
 
 <p align="center">
-    <img src="https://giant.gfycat.com/DelayedSandyHammerheadbird.gif">
+    <img src="https://gfycat.com/DelayedSandyHammerheadbird.gif">
 </p>
 
 
