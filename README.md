@@ -37,9 +37,6 @@ Currently provides the following features that will be monitored:
 
 > This will automatically configure and install `Metricbeat`, `Winlogbeat`, and `Auditbeat` as well as load any pre-packaged dashboards . 
 
-<div class="bg-green-light mb-2">
-  .text-gray-dark on .bg-green-light
-</div>
 
 4. When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. 
 
@@ -49,6 +46,15 @@ Currently provides the following features that will be monitored:
 
 <b>Congratulations! Your local machine is now connected!</b>
 
+#### Server Install
+
+1. Copy and paste the downloaded Zip folder from the local machine to the server. 
+
+2. Unzip the package and extract the contents to the `C:/` drive.
+
+3. Open the extracted folder and double click on the `serverInstall.exe`.
+
+4. When prompted, enter the credentials provided when you created your stack and click OK.
 
 
 
