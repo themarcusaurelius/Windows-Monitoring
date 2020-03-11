@@ -37,7 +37,11 @@ Currently provides the following features that will be monitored:
 
 > This will automatically configure and install `Metricbeat`, `Winlogbeat`, and `Auditbeat` as well as load any pre-packaged dashboards . 
 
-4. When prompted again, choose the folder you would like to monitor for file changes. 
+4. When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. 
+
+<p align="center">
+    <img src="https://giant.gfycat.com/RewardingLikableGermanpinscher.gif">
+</p>
 
 
 
