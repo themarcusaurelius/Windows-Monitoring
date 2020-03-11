@@ -31,7 +31,7 @@ Currently provides the following features that will be monitored:
 
 3. When prompted, enter your credentials below and click OK.
 
-```js
+```html
 Kibana URL: kibana-url
 Username: username
 Password: password
