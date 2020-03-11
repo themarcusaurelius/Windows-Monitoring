@@ -61,7 +61,7 @@ Elasticsearch API Endpoint: api-endpoint
    
    - Option B: In Powershell, as administrator, run the following request:
    
-   ```
+   ```css
    Start-BitsTransfer -Source 'https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip' -Destination 'C:\Users\Administrator\Downloads\windows-monitoring-master.zip'
    ```
 
