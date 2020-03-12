@@ -32,10 +32,10 @@ Currently provides the following features that will be monitored:
 3. When prompted, enter your credentials below and click OK.
 
 ```css
-Kibana URL: kibana-url
-Username: username
-Password: password
-Elasticsearch API Endpoint: api-endpoint
+Kibana URL: _PLACEHOLDER_KIBANA_URL_
+Username: _PLACEHOLDER_USERNAME_
+Password: _PLACEHOLDER_PASSWORD_
+Elasticsearch API Endpoint: _PLACEHOLDER_API_ENDPOINT_
 ```
 
 <p align="center">
@@ -72,10 +72,10 @@ Elasticsearch API Endpoint: api-endpoint
 4. When prompted, enter your credentials below and click OK.
 
 ```css
-Kibana URL: kibana-url
-Username: username
-Password: password
-Elasticsearch API Endpoint: api-endpoint
+Kibana URL: _PLACEHOLDER_KIBANA_URL_
+Username: _PLACEHOLDER_USERNAME_
+Password: _PLACEHOLDER_PASSWORD_
+Elasticsearch API Endpoint: _PLACEHOLDER_API_ENDPOINT_
 ```
 
 > This will automatically configure and install `Metricbeat`, `Winlogbeat`, and `Auditbeat` as well as load any pre-packaged dashboards . 
