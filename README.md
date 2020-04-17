@@ -17,19 +17,19 @@ Currently provides the following features that will be monitored:
 - Successful/unsuccessful logons monitoring
 - Active directory user permissions monitoring
 
-### Installation & Setup
+## Installation
 
-1. Download the zip file package to your local machine using the link below:
-
-   [Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
-   
 #### Local Install:
 
-1. Unzip the package and extract the contents to the `C:/` drive.
+1) Download the zip file package to your local machine using the link below:
 
-2. Open the extracted folder and double click on the `localInstall.exe`.
+   [Zip File](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip)
 
-3. When prompted, enter your credentials below and click OK.
+2) Unzip the package and extract the contents to the `C:/` drive.
+
+3) Open the extracted folder and double click on the `localInstall.exe`.
+
+4) When prompted, enter your credentials below and click OK.
 
 ```css
 Kibana URL: _PLACEHOLDER_KIBANA_URL_
@@ -44,8 +44,7 @@ Elasticsearch API Endpoint: _PLACEHOLDER_API_ENDPOINT_
 
 > This will automatically configure and install `Metricbeat`, `Winlogbeat`, and `Auditbeat` as well as load any pre-packaged dashboards . 
 
-
-4. When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. If you do not wish to monitor any folders at this time, click `Cancel` to exit.
+5) When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. If you do not wish to monitor any folders at this time, click `Cancel` to exit.
 
 <p align="center">
     <img src="https://giant.gfycat.com/DelayedSandyHammerheadbird.gif">
@@ -53,9 +52,11 @@ Elasticsearch API Endpoint: _PLACEHOLDER_API_ENDPOINT_
 
 <b>Congratulations! Your local machine is now connected!</b>
 
+<hr>
+
 #### Server Install
 
-1. Get the Zip package on the server.
+1) Get the [Zip](https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip) package on the server.
 
    - Option A: Copy and paste the downloaded Zip folder from the local machine to the server.
    
@@ -65,11 +66,11 @@ Elasticsearch API Endpoint: _PLACEHOLDER_API_ENDPOINT_
    Start-BitsTransfer -Source 'https://github.com/themarcusaurelius/windows-monitoring/archive/master.zip' -Destination 'C:\Users\Administrator\Downloads\windows-monitoring-master.zip'
    ```
 
-2. Unzip the package and extract the contents to the `C:/` drive.
+2) Unzip the package and extract the contents to the `C:/` drive.
 
-3. Open the extracted folder and double click on the `serverInstall.exe`.
+3) Open the extracted folder and double click on the `serverInstall.exe`.
 
-4. When prompted, enter your credentials below and click OK.
+4) When prompted, enter your credentials below and click OK.
 
 ```css
 Kibana URL: _PLACEHOLDER_KIBANA_URL_
@@ -80,7 +81,7 @@ Elasticsearch API Endpoint: _PLACEHOLDER_API_ENDPOINT_
 
 > This will automatically configure and install `Metricbeat`, `Winlogbeat`, and `Auditbeat` as well as load any pre-packaged dashboards . 
 
-5. When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. If you do not wish to monitor any folders at this time, click `Cancel` to exit.
+5) When prompted again, choose the folder you would like to monitor for file changes with `Auditbeat`. If you do not wish to monitor any folders at this time, click `Cancel` to exit.
 
 Your data is now shipping!
 
