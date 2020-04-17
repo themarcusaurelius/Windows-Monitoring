@@ -5,17 +5,20 @@ This program provides security and application monitoring to Windows computers a
 Currently provides the following features that will be monitored:
 
 <b>Local Terminals:</b>
+```
 - External device plugins and data transfer monitoring
 - All installed services by user or system monitoring
 - File changes monitoring
 - Successful/Unsuccessful logons monitoring 
+```
 
-
-<b>Servers</b>
+<b>Servers:</b>
+```
 - All installed services by user or system monitoring
 - File changes monitoring
 - Successful/unsuccessful logons monitoring
 - Active directory user permissions monitoring
+```
 
 ## Installation
 
